@@ -1,0 +1,61 @@
+.blank10{width: 100%;height: 10px;overflow: hidden;clear: both;}
+.blank15{width: 100%;height: 15px;overflow: hidden;clear: both;}
+.blank20{width: 100%;height: 20px;overflow: hidden;clear: both;}
+.blank25{width: 100%;height: 25px;overflow: hidden;clear: both;}
+.blank30{width: 100%;height: 30px;overflow: hidden;clear: both;}
+.fl,.fm{float: left;}
+.fr{float: right;}
+.text-center{text-align: center}
+.color-white{color: #FFF}
+
+.body-with-bg{width: 100%;min-height: 800px;position: relative;background:#f5f8fd url(../images/bg_01.jpg) no-repeat center top;}
+.login-box{width: 530px;margin: 0 auto;height: 60px;position: relative;top: 560px}
+.layui-form-item .my-length{width: 206px}
+.my-submit{padding: 0 30px;float: right;background: #1a6ead}
+.footer{position: absolute;text-align: center;bottom: 50px;width: 100%;color: #999}
+
+.top{background: #2f7dbb url(../images/bg1_01.jpg) no-repeat left center;height: 96px}
+.top-head{width: 100%;height: 96px;background: url(../images/logo.png) no-repeat left center;}
+.member-info p{padding-top: 20px;line-height: 2;color: #bed1e5}
+.member-info p a{color: #FFF}
+.menu{background: #f6f6f6;border-bottom: 1px solid #b6b6b6;height: 50px}
+.menu a{display: inline-block;margin:0 30px}
+
+.search-box{background: #fffdd9;border:1px solid #cbcbcb;border-radius: 2px}
+.search-box .layui-form-label{padding: 9px 5px;width:auto;}
+.search-box .layui-inline{margin-left: 20px}
+.search-box .layui-input-block{margin-left: 40px}
+
+.add-box{background: #f9f9f9;border:1px solid #cbcbcb;border-radius: 2px}
+.add-item-bt{height: 40px;line-height: 40px;border-bottom: 1px solid #cbcbcb;background: #ccebf3;text-indent: 10px}
+
+.my-table tr{background: #f9f9f9;border-bottom: 1px solid #ddd;}
+.my-table td{border:none;padding: 10px}
+
+.layui-form-pane2 .layui-table{margin-top: 0}
+.layui-form-pane2 .layui-form-item{margin-bottom: 0px}
+.layui-form-pane2 .layui-form-item .layui-input-inline{margin-right: 0}
+
+.sf-box .layui-input-block{margin-left: 110px}
+.sf-box .layui-form-label{padding: 9px 5px;width:auto;}
+
+.see-details{cursor: pointer;}
+.user-ma{border: 1px solid #cbcbcb}
+.userform .layui-inline{margin-top: 15px}
+.userform .layui-form-label{width: 50px;padding: 9px 5px}
+.userform .layui-input-block{margin-left: 75px}
+.userform .layui-input{padding-right: 0}
+
+.shezhi{background: #f6f6f6;border: 1px solid #cbcbcb;}
+.sz-bt{height: 40px;line-height: 40px;border-bottom: 1px solid #cbcbcb;text-indent: 10px}
+
+.userform2 .layui-form-label{width: 60px;padding: 9px 5px}
+.userform2 .layui-inline{margin-right: 0px}
+.userform2 .layui-form-item{margin-bottom: 10px}
+.bortop{border-top: 1px solid #cbcbcb;}
+.border-right{border-right: 1px solid #cbcbcb;}
+
+.userform3 .layui-form-label{width: 40px;padding: 9px 5px}
+.userform3 .layui-inline{margin-right: 0px}
+.userform3 .layui-form-item{margin-bottom: 10px}
+.userform3 .layui-form-item .layui-input-inline{width: 70px}
