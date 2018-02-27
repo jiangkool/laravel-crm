@@ -18,7 +18,7 @@ class GameDataController extends Controller
     {
     	if ($request->ajax()) {
 
-    		$openid=Session::get('openid')? Session::get('openid'):'ooXAzwp0SZXmr3d_tgfDmNTp07jg';
+    		$openid=Session::get('openid')? Session::get('openid'):'';
 
  			if (Gameshlwdata::updateOrCreate(['openid'=>$openid],['openid'=>$openid,'username'=>$request->username,'mobile'=>$request->mobile])) {
     			return response()->json(['code'=>'0']);	
