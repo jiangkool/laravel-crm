@@ -26,6 +26,6 @@
 		</div>
 	</div>
 	<div class="clear"></div>
-	<div class="footer"><p>Copyright ©2013-2017   福州神康医院版权所有</p></div>
+	<div class="footer"><p>Copyright ©2013-2017 版权所有</p></div>
 </body>
 </html>
