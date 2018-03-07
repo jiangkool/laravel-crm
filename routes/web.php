@@ -1,13 +1,5 @@
 <?php
 
-// Home module
-Route::group(['namespace' => 'Home'], function() {
-
-	//home
-    Route::get('/', 'HomeController@index')->name('home');
-
-});
-
 // Admin module
 Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
 

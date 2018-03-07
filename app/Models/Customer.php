@@ -361,7 +361,7 @@ class Customer extends Model
     {
         $customer=Customer::findOrFail($request->id);
 
-        if ($customer->user_id==Auth::user()->name) {
+        if ($customer->user_id==Auth::user()->name || Auth::user()->id==1 ) {
             $customer->status=1;
             $customer->save();
             $data['status']='success';

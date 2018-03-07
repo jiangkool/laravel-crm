@@ -10,7 +10,7 @@
 					<div class="layui-inline">
 					<label class="layui-form-label">归属</label>
 					<div class="layui-input-inline"  style="width: 100px;">
-					<select name="user_id" disabled>
+					<select name="user_id" @if(Auth::id()!=1) disabled @endif>
 					@foreach($users as $user)
 					<option value="{{ $user->id }}" @if($user->id==Auth::id()) selected @endif>{{ $user->name }}</option>
 					@endforeach
