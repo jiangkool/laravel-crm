@@ -27,26 +27,31 @@ class CustomerController extends Controller
         $this->alldoctors=Doctor::all();
         $this->alldiseases=Disease::all();
     }
+
     /**
-     * Display a listing of the resource.
-     *  
-     * @return {code: 0, msg: "", count: 1000, data: [] }
-      */
+     * Customer list .
+     * 
+     * @param  Request $request
+     * @return json $data
+     */
     public function lists(Request $request)
     {   
         $rs=Customer::getCustomers($request);
+
         $data['code']=0;
         $data['msg'] = '';
         $data['count']=count($rs['collection']);
         $data['data']=isset($rs['rs'])? $rs['rs']:$rs['collection'];
-        //dd(response()->json($data));
+
         return response()->json($data);
     }
+
     /**
-     * Display a listing of the resource.
-     *  
-     * @return {code: 0, msg: "", count: 1000, data: [] }
-      */
+     * Customer search result list . 
+     * 
+     * @param  Request $request
+     * @return json $data
+     */
     public function search(Request $request)
     {   
         $rs=Customer::searchCustomers($request);
@@ -58,13 +63,17 @@ class CustomerController extends Controller
         return response()->json($data);
     }
 
+    /**
+     * Show all users.
+     */
     public function index()
     {   
         $users=$this->allusers;
         return view('crm.br-list',compact('users'));
     }
+
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new doctor.
      *
      * @return \Illuminate\Http\Response
      */
@@ -92,19 +101,9 @@ class CustomerController extends Controller
         return response()->json($data);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing a customer.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -138,6 +137,12 @@ class CustomerController extends Controller
 
     }
 
+    /**
+     * Customer checker.
+     * 
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function dianzhen(Request $request)
     {
        $data=Customer::dianzhen($request);
@@ -147,7 +152,7 @@ class CustomerController extends Controller
 
 
     /**
-     * Remove the specified resource from storage.
+     * Remove a customer.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -160,7 +165,11 @@ class CustomerController extends Controller
     }
 
 
-
+    /**
+     * Show checked customers.
+     * 
+     * @return \Illuminate\Http\Response
+     */
     public function dzlist()
     {
         $doctors=$this->alldoctors;
@@ -169,4 +178,5 @@ class CustomerController extends Controller
 
         return view('crm.daozhen-gl',compact('doctors','diseases','users'));
     }
+    
 }

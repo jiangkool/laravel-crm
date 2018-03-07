@@ -77,7 +77,7 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin'],function(){
 	//客户数据交接
 	Route::post('data-copy','UserController@dataCopy')->name('customer.data-copy');
 
-
+	//config seting
 	Route::get('config',['as'=>'admin.config','uses'=>'HomeController@config']);
 
 
