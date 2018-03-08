@@ -17,22 +17,22 @@ use App\Models\Role;
 class HomeController extends Controller
 {
 	use GeetestCaptcha;
+
 	//__construct
 	public function __construct()
 	{
 		$this->middleware('auth')->except(['index','login','getGeetest']);
 	}
 
-    //display login form
+    /**
+     * Display login Form.
+     * 
+     */
 	public function index()
 	{
 		if (Auth::check()) {
 
-			//获取通知消息
-			$user=Auth::user();
-			$notifications = $user->notifications()->get()->take(3)->toArray();
-
-			//获取上次登录时间
+			//Get the lastest time.
             $rs=Log::getLastLoginTime($user->name);
            
 			return view('crm.main',compact('rs'));
@@ -41,18 +41,25 @@ class HomeController extends Controller
 		}
 	}
 
-	//validator login if error return 
+	/**
+	 * Login a user in admins.
+	 * 
+	 * @param  string $name
+	 * @param  string $password
+	 * 
+	 * @return Redirect
+	 */
 	public function login(Request $request)
 	{
 
-		//validator login form
+		// validator login form
 		$validation=$this->validate($request,[
 				'name'=>'required|min:5',
 				'password'=>'required',
 			]);
 
 		// validator success then attempt
-		if (Auth::attempt(['name'=>$request->name,'password'=>$request->password,'active'=>1])) {
+		if (Auth::attempt(['name'=>$request->name,'password'=>$request->password,'active'=>1,'is_admin'=>1])) {
 			
 			//get user model
             $user=User::findOrFail(Auth::user()->id);
@@ -63,7 +70,7 @@ class HomeController extends Controller
             //explode to arr
             $roleArr=array_flip(array_unique(explode(',',$rolestr)));
             Session::put('admin_permissions',$roleArr);
-           if (session('is_loged')!==1) {
+           	if (session('is_loged')!==1) {
             	
             	//记录本次登录
             	Log::addlog($user->name,'login');
@@ -78,8 +85,11 @@ class HomeController extends Controller
 
 	}
 
-	//login out
-
+	/**
+	 * LoginOut a user.
+	 * 
+	 * @return Redirect
+	 */
 	public function loginOut()
 	{
 		Auth::logout();
@@ -87,7 +97,11 @@ class HomeController extends Controller
 		return Redirect::route('login')->withErrors('您已经退出登录!');
 	}
 
-	//show admin config
+	/**
+	 * Show admin configs.
+	 * 
+	 * @return view
+	 */
 	public function config()
 	{
 		$roles=Role::getAllRoles();

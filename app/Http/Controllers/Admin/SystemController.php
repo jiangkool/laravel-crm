@@ -13,11 +13,18 @@ use App\Models\System;
 
 class SystemController extends Controller
 {
+    
     public function __construct()
     {
     	$this->middleware(['auth','isAdmin']);
     }
 
+
+    /**
+     * Show systems.
+     * 
+     * @return view
+     */
     public function index()
     {
     	//get system
@@ -26,16 +33,23 @@ class SystemController extends Controller
     	return view('admin.system',compact('systems'));
     }
 
+
+    /**
+     * Update system setting.
+     * 
+     * @param  Request $request
+     * @return Redirect
+     */
     public function update(Request $request)
     {
     	if(System::updateOrCreate(['id'=>1],request()->all())){
     		return Redirect::route('system')->with('message','系统设置已更新！');
     	}
-
-
     }
+
+
     /*
-    * 清除缓存
+    * Clear cache.
     *
     */
     public function clearCache()
@@ -43,7 +57,8 @@ class SystemController extends Controller
          Artisan::call('config:clear');
          Artisan::call('route:clear');
          Artisan::call('view:clear');
-       return view('admin.clear_cache');
+         return view('admin.clear_cache');
     }
+
 
 }

@@ -7,16 +7,30 @@ use App\Http\Controllers\Controller;
 
 class UploadController extends Controller
 {
+
 	public function __construct()
 	{
 		$this->middleWare('auth')->except('showUpload');
 	}
 
+
+    /**
+     * Show upload box.
+     * 
+     * @return view
+     */
     public function showUpload()
     {
     	return view('upload');
     }
 
+
+    /**
+     * Upload files.
+     * 
+     * @param  Request $request
+     * @return redirect
+     */
     public function uploadFiles(Request $request)
     {
     	//get upload http post
@@ -55,4 +69,5 @@ class UploadController extends Controller
     		return redirect('upload')->with('message', 'Image uploaded successfully');
     	}
     }
+    
 }

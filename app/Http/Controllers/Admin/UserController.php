@@ -13,10 +13,13 @@ use App\Models\Customer;
 
 class UserController extends Controller
 {
+
     public function __construct()
     {
         $this->middleware(['auth','isAdmin'])->except(['show']);
     }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -26,10 +29,10 @@ class UserController extends Controller
     {
         //users list view
         $users=User::simplePaginate(10);
-        //dd($users);
-        //$group=$users->role()->get();
+
         return view('admin.users',compact('users'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -39,10 +42,12 @@ class UserController extends Controller
     public function create()
     {   
         $perms=Role::all();
+
         //show create user view
         return view('admin.create_user',compact('perms'));
 
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -108,16 +113,6 @@ class UserController extends Controller
         return response()->json($data);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -133,6 +128,7 @@ class UserController extends Controller
       // dd($roles);
         return view('admin.user_edit',compact('user','perms','roles'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -163,6 +159,8 @@ class UserController extends Controller
          return Redirect::back()->with('message','管理员修改成功！');
     
     }
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -193,6 +191,8 @@ class UserController extends Controller
         }
     
     }
+
+
     /**
      * Remove the specified resource from storage.
      *
@@ -215,8 +215,10 @@ class UserController extends Controller
         
     }
 
+
     /**
-     * System logs
+     * System logs.
+     * 
      * @return \Illuminate\Http\Response
      */
     public function log()
@@ -227,8 +229,10 @@ class UserController extends Controller
         return view('admin.logs',compact('logs'));
     }
 
+
     /**
-     * System logs clear
+     * System logs clear.
+     * 
      * @return \Illuminate\Http\Response
      */
     public function logdel()
@@ -248,11 +252,12 @@ class UserController extends Controller
     public function lists(Request $request)
     {
         $rs=User::getAllUsers($request);
+
         $data['code']=0;
         $data['msg'] = '';
         $data['count']=count($rs['collection']);
         $data['data']=isset($rs['rs'])? $rs['rs']:$rs['collection'];
-        //dd($data['data']);
+
         return response()->json($data);
 
     }
@@ -296,8 +301,10 @@ class UserController extends Controller
         return response()->json($data);
     }
 
-    /*
-    * 会员之间数据交接转移
+
+    /**
+    * 会员之间数据交接转移.
+    * 
     * @param int $ysuserid
     * @param str $username
     * @return json $data
@@ -308,5 +315,6 @@ class UserController extends Controller
 
         return response()->json($data);
     }
+    
 
 }
