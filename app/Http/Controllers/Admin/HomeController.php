@@ -32,6 +32,8 @@ class HomeController extends Controller
 	{
 		if (Auth::check()) {
 
+			$user=Auth::user();
+			
 			//Get the lastest time.
             $rs=Log::getLastLoginTime($user->name);
            
@@ -59,7 +61,7 @@ class HomeController extends Controller
 			]);
 
 		// validator success then attempt
-		if (Auth::attempt(['name'=>$request->name,'password'=>$request->password,'active'=>1,'is_admin'=>1])) {
+		if (Auth::attempt(['name'=>$request->name,'password'=>$request->password,'active'=>1])) {
 			
 			//get user model
             $user=User::findOrFail(Auth::user()->id);

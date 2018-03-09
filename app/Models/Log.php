@@ -17,7 +17,19 @@ class Log extends Model
 
     public static function getLastLoginTime($username)
     {
-    	return self::where('username',$username)->where('action','login')->orderBy('created_at','desc')->first();
+        
+        $lastLogin=self::where('username',$username)->where('action','login')->orderBy('id','desc')->first();
+        $logins=self::where('username',$username)->where('action','login')->select();
+
+        if ($logins->count() >1 ) {
+
+            return self::where('username',$username)->where('action','login')->where('id','<',$lastLogin->id)->orderBy('id','desc')->first();
+
+        }else{
+
+            return $lastLogin;
+        }
+    	
     }
 
 }
