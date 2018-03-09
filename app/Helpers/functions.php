@@ -39,14 +39,14 @@ function msubstr($str, $start=0, $length, $charset="utf-8", $suffix=true) {
  * 判断是否为手机访问
  * @return  boolean
  */
-function sp_is_mobile() {
-	static $sp_is_mobile;
+function is_mobile() {
+	static $is_mobile;
 
-	if ( isset($sp_is_mobile) )
-		return $sp_is_mobile;
+	if ( isset($is_mobile) )
+		return $is_mobile;
 
 	if ( empty($_SERVER['HTTP_USER_AGENT']) ) {
-		$sp_is_mobile = false;
+		$is_mobile = false;
 	} elseif ( strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false // many mobile devices (all iPhone, iPad, etc.)
 			|| strpos($_SERVER['HTTP_USER_AGENT'], 'Android') !== false
 			|| strpos($_SERVER['HTTP_USER_AGENT'], 'Silk/') !== false
@@ -54,12 +54,12 @@ function sp_is_mobile() {
 			|| strpos($_SERVER['HTTP_USER_AGENT'], 'BlackBerry') !== false
 			|| strpos($_SERVER['HTTP_USER_AGENT'], 'Opera Mini') !== false
 			|| strpos($_SERVER['HTTP_USER_AGENT'], 'Opera Mobi') !== false ) {
-		$sp_is_mobile = true;
+		$is_mobile = true;
 	} else {
-		$sp_is_mobile = false;
+		$is_mobile = false;
 	}
 
-	return $sp_is_mobile;
+	return $is_mobile;
 }
 
 

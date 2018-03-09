@@ -314,9 +314,6 @@ class Customer extends Model
 	            $request->zixunren!=$customer->zixunren && $customer->zixunren=$request->zixunren;
 	            $request->hz_guanxi!=$customer->hz_guanxi && $customer->hz_guanxi=$request->hz_guanxi;
 	            $request->status!=$customer->status && $customer->status=$request->status;
-	            
-
-
 	            $request->bz_id!=$order->bz_id && $order->bz_id=$request->bz_id;
 	            $request->is_tel!=$order->is_tel && $order->is_tel=$request->is_tel;
 	            $request->is_visit!=$order->is_visit && $order->is_visit=$request->is_visit;
